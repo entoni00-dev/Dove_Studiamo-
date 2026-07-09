@@ -1,0 +1,490 @@
+{
+  "Campania": {
+    "Napoli": [
+      "Napoli",
+      "Portici",
+      "Ercolano",
+      "San Giorgio a Cremano",
+      "Pozzuoli",
+      "Acerra",
+      "Casoria",
+      "Giugliano in Campania",
+      "Torre del Greco",
+      "Torre Annunziata",
+      "Castellammare di Stabia",
+      "Pompei"
+    ],
+    "Caserta": [
+      "Caserta",
+      "Aversa",
+      "Marcianise",
+      "Santa Maria Capua Vetere",
+      "Capua"
+    ],
+    "Salerno": [
+      "Salerno",
+      "Cava de' Tirreni",
+      "Battipaglia",
+      "Eboli",
+      "Nocera Inferiore",
+      "Agropoli"
+    ],
+    "Avellino": [
+      "Avellino",
+      "Atripalda",
+      "Mercogliano",
+      "Solofra"
+    ],
+    "Benevento": [
+      "Benevento",
+      "Montesarchio",
+      "Sant'Agata de' Goti"
+    ]
+  },
+  "Puglia": {
+    "Bari": [
+      "Bari",
+      "Altamura",
+      "Monopoli",
+      "Molfetta",
+      "Bitonto"
+    ],
+    "Lecce": [
+      "Lecce",
+      "Nardò",
+      "Gallipoli",
+      "Otranto"
+    ],
+    "Foggia": [
+      "Foggia",
+      "Manfredonia",
+      "Cerignola",
+      "San Severo"
+    ],
+    "Brindisi": [
+      "Brindisi",
+      "Ostuni",
+      "Fasano"
+    ],
+    "Taranto": [
+      "Taranto",
+      "Martina Franca",
+      "Grottaglie"
+    ]
+  },
+  "Calabria": {
+    "Catanzaro": [
+      "Catanzaro",
+      "Lamezia Terme"
+    ],
+    "Cosenza": [
+      "Cosenza",
+      "Rende",
+      "Corigliano-Rossano"
+    ],
+    "Reggio Calabria": [
+      "Reggio Calabria",
+      "Gioia Tauro",
+      "Palmi"
+    ],
+    "Crotone": [
+      "Crotone",
+      "Cirò Marina"
+    ]
+  },
+  "Sicilia": {
+    "Palermo": [
+      "Palermo",
+      "Monreale",
+      "Bagheria"
+    ],
+    "Catania": [
+      "Catania",
+      "Acireale",
+      "Paternò"
+    ],
+    "Messina": [
+      "Messina",
+      "Milazzo",
+      "Taormina"
+    ],
+    "Siracusa": [
+      "Siracusa",
+      "Augusta",
+      "Noto"
+    ]
+  },
+  "Basilicata": {
+    "Potenza": [
+      "Potenza",
+      "Melfi"
+    ],
+    "Matera": [
+      "Matera",
+      "Policoro"
+    ]
+  },
+  "Molise": {
+    "Campobasso": [
+      "Campobasso",
+      "Termoli"
+    ],
+    "Isernia": [
+      "Isernia",
+      "Venafro"
+    ]
+  },
+  "Lombardia": {
+    "Milano": [
+      "Milano",
+      "Sesto San Giovanni",
+      "Cinisello Balsamo",
+      "Monza"
+    ],
+    "Bergamo": [
+      "Bergamo",
+      "Treviglio",
+      "Seriate"
+    ],
+    "Brescia": [
+      "Brescia",
+      "Desenzano del Garda",
+      "Chiari"
+    ],
+    "Como": [
+      "Como",
+      "Cantù",
+      "Erba"
+    ],
+    "Varese": [
+      "Varese",
+      "Busto Arsizio",
+      "Gallarate"
+    ],
+    "Monza e della Brianza": [
+      "Monza",
+      "Seregno",
+      "Desio"
+    ],
+    "Mantova": [
+      "Mantova",
+      "Castiglione delle Stiviere",
+      "Suzzara"
+    ],
+    "Pavia": [
+      "Pavia",
+      "Vigevano",
+      "Pavia"
+    ],
+    "Lecco": [
+      "Lecco",
+      "Merate",
+      "Oggiono"
+    ],
+    "Lodi": [
+      "Lodi",
+      "Codogno",
+      "Sant'Angelo Lodigiano"
+    ]
+  },
+  "Lazio": {
+    "Roma": [
+      "Roma",
+      "Fiumicino",
+      "Guidonia Montecelio",
+      "Tivoli"
+    ],
+    "Latina": [
+      "Latina",
+      "April",
+      "Formia"
+    ],
+    "Frosinone": [
+      "Frosinone",
+      "Cassino",
+      "Sora"
+    ],
+    "Viterbo": [
+      "Viterbo",
+      "Civita Castellana",
+      "Tarquinia"
+    ]
+  },
+  "Veneto": {
+    "Venezia": [
+      "Venezia",
+      "Mestre",
+      "Chioggia"
+    ],
+    "Verona": [
+      "Verona",
+      "Legnago",
+      "San Giovanni Lupatoto"
+    ],
+    "Padova": [
+      "Padova",
+      "Este",
+      "Cittadella"
+    ],
+    "Vicenza": [
+      "Vicenza",
+      "Schio",
+      "Thiene"
+    ],
+    "Treviso": [
+      "Treviso",
+      "Conegliano",
+      "Castelfranco Veneto"
+    ],
+    "Rovigo": [
+      "Rovigo",
+      "Adria",
+      "Lendinara"
+    ]
+  },
+  "Emilia-Romagna": {
+    "Bologna": [
+      "Bologna",
+      "Casalecchio di Reno",
+      "San Lazzaro di Savena"
+    ],
+    "Modena": [
+      "Modena",
+      "Carpi",
+      "Sassuolo"
+    ],
+    "Parma": [
+      "Parma",
+      "Fidenza",
+      "Salsomaggiore Terme"
+    ],
+    "Reggio Emilia": [
+      "Reggio Emilia",
+      "Guastalla",
+      "Correggio"
+    ],
+    "Ravenna": [
+      "Ravenna",
+      "Faenza",
+      "Lugo"
+    ],
+    "Ferrara": [
+      "Ferrara",
+      "Comacchio",
+      "Cento"
+    ],
+    "Forlì-Cesena": [
+      "Forlì",
+      "Cesena",
+      "Cesenatico"
+    ]
+  },
+  "Toscana": {
+    "Firenze": [
+      "Firenze",
+      "Scandicci",
+      "Sesto Fiorentino"
+    ],
+    "Pisa": [
+      "Pisa",
+      "Pontedera",
+      "San Giuliano Terme"
+    ],
+    "Siena": [
+      "Siena",
+      "Poggibonsi",
+      "Colle di Val d'Elsa"
+    ],
+    "Arezzo": [
+      "Arezzo",
+      "Cortona",
+      "Sansepolcro"
+    ],
+    "Lucca": [
+      "Lucca",
+      "Viareggio",
+      "Capannori"
+    ],
+    "Livorno": [
+      "Livorno",
+      "Piombino",
+      "Rosignano Marittimo"
+    ],
+    "Grosseto": [
+      "Grosseto",
+      "Follonica",
+      "Orbetello"
+    ],
+    "Massa-Carrara": [
+      "Massa",
+      "Carrara",
+      "Pontremoli"
+    ]
+  },
+  "Piemonte": {
+    "Torino": [
+      "Torino",
+      "Moncalieri",
+      "Rivoli"
+    ],
+    "Novara": [
+      "Novara",
+      "Borgomanero",
+      "Arona"
+    ],
+    "Cuneo": [
+      "Cuneo",
+      "Alba",
+      "Bra"
+    ],
+    "Asti": [
+      "Asti",
+      "Nizza Monferrato",
+      "Canelli"
+    ],
+    "Vercelli": [
+      "Vercelli",
+      "Biella",
+      "Trino"
+    ],
+    "Verbano-Cusio-Ossola": [
+      "Verbania",
+      "Domodossola",
+      "Omegna"
+    ]
+  },
+  "Liguria": {
+    "Genova": [
+      "Genova",
+      "Rapallo",
+      "Chiavari"
+    ],
+    "La Spezia": [
+      "La Spezia",
+      "Sarzana",
+      "Lerici"
+    ],
+    "Savona": [
+      "Savona",
+      "Albenga",
+      "Finale Ligure"
+    ]
+  },
+  "Friuli Venezia Giulia": {
+    "Trieste": [
+      "Trieste",
+      "Muggia"
+    ],
+    "Udine": [
+      "Udine",
+      "Cividale del Friuli",
+      "Tolmezzo"
+    ],
+    "Pordenone": [
+      "Pordenone",
+      "Sacile",
+      "Spilimbergo"
+    ]
+  },
+  "Trentino-Alto Adige": {
+    "Trento": [
+      "Trento",
+      "Rovereto",
+      "Pergine Valsugana"
+    ],
+    "Bolzano": [
+      "Bolzano",
+      "Merano",
+      "Bressanone"
+    ]
+  },
+  "Abruzzo": {
+    "L'Aquila": [
+      "L'Aquila",
+      "Avezzano",
+      "Sulmona"
+    ],
+    "Teramo": [
+      "Teramo",
+      "Giulianova",
+      "Roseto degli Abruzzi"
+    ],
+    "Pescara": [
+      "Pescara",
+      "Popoli",
+      "Spoltore"
+    ],
+    "Chieti": [
+      "Chieti",
+      "Vasto",
+      "Ortona"
+    ]
+  },
+  "Umbria": {
+    "Perugia": [
+      "Perugia",
+      "Assisi",
+      "Foligno"
+    ],
+    "Terni": [
+      "Terni",
+      "Orvieto",
+      "Narni"
+    ]
+  },
+  "Marche": {
+    "Ancona": [
+      "Ancona",
+      "Senigallia",
+      "Jesolo"
+    ],
+    "Pesaro e Urbino": [
+      "Pesaro",
+      "Urbino",
+      "Fano"
+    ],
+    "Macerata": [
+      "Macerata",
+      "Civitanova Marche",
+      "Tolentino"
+    ],
+    "Ascoli Piceno": [
+      "Ascoli Piceno",
+      "San Benedetto del Tronto",
+      "Grottammare"
+    ],
+    "Fermo": [
+      "Fermo",
+      "Porto San Giorgio",
+      "Sant'Elpidio a Mare"
+    ]
+  },
+  "Valle d'Aosta": {
+    "Aosta": [
+      "Aosta",
+      "Courmayeur"
+    ]
+  },
+  "Sardegna": {
+    "Cagliari": [
+      "Cagliari",
+      "Quartu Sant'Elena",
+      "Selargius"
+    ],
+    "Sassari": [
+      "Sassari",
+      "Alghero",
+      "Olbia"
+    ],
+    "Nuoro": [
+      "Nuoro",
+      "Orosei",
+      "Siniscola"
+    ],
+    "Oristano": [
+      "Oristano",
+      "Cabras",
+      "Ghilarza"
+    ]
+  }
+}

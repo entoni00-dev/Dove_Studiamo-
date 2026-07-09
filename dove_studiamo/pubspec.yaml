@@ -1,0 +1,37 @@
+name: dove_studiamo
+description: App per trovare posti dove studiare.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '^3.12.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  provider: ^6.1.2
+  google_maps_flutter: ^2.12.3
+  url_launcher: ^6.3.2
+  http: ^1.6.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/data/italy.places.json
+    - assets/images/dove_studiamo.png
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/dove_studiamo.png"
+  remove_alpha_ios: true
