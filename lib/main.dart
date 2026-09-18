@@ -8,9 +8,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => PlaceProvider()..loadPlaces(),
-        ),
+        ChangeNotifierProvider(create: (_) => PlaceProvider()..loadPlaces()),
       ],
       child: const DoveStudianoApp(),
     ),

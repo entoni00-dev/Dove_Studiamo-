@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "583002313798",
+    "project_id": "dove-studiamo-28ad5",
+    "storage_bucket": "dove-studiamo-28ad5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583002313798:android:593203ce60de8282b4e647",
+        "android_client_info": {
+          "package_name": "com.example.dove_studiamo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzGeLtAgBaZedfUC73qivNJSKDune5Ea0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

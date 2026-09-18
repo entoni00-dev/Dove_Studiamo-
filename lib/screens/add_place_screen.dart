@@ -51,13 +51,34 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     loadPlacesData();
   }
 
+  @override
+  void dispose() {
+    nameController.dispose();
+    addressController.dispose();
+    cityController.dispose();
+    super.dispose();
+  }
+
   Future<void> loadPlacesData() async {
-    final jsonString = await rootBundle.loadString(
-      'assets/data/italy.places.json',
-    );
-    setState(() {
-      placesData = jsonDecode(jsonString);
-    });
+    try {
+      final jsonString = await rootBundle.loadString(
+        'assets/data/italy.places.json',
+      );
+
+      if (!mounted) return;
+
+      setState(() {
+        placesData = jsonDecode(jsonString) as Map<String, dynamic>;
+      });
+    } catch (_) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Non riesco a caricare regioni, province e comuni.'),
+        ),
+      );
+    }
   }
 
   @override
@@ -86,7 +107,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: selectedRegion,
+              initialValue: selectedRegion,
               decoration: const InputDecoration(
                 labelText: 'Regione',
                 border: OutlineInputBorder(),
@@ -105,7 +126,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: selectedProvince,
+              initialValue: selectedProvince,
               decoration: const InputDecoration(
                 labelText: 'Provincia',
                 border: OutlineInputBorder(),
@@ -125,7 +146,7 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
             ),
             const SizedBox(height: 16),
             DropdownButtonFormField<String>(
-              value: selectedCity,
+              initialValue: selectedCity,
               decoration: const InputDecoration(
                 labelText: 'Comune',
                 border: OutlineInputBorder(),
@@ -223,9 +244,11 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  if (nameController.text.isEmpty ||
-                      addressController.text.isEmpty ||
-                      cityController.text.isEmpty ||
+                  final placeName = nameController.text.trim();
+                  final placeAddress = addressController.text.trim();
+
+                  if (placeName.isEmpty ||
+                      placeAddress.isEmpty ||
                       selectedRegion == null ||
                       selectedProvince == null ||
                       selectedCity == null) {
@@ -239,8 +262,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
 
                   final newPlace = StudyPlace(
                     id: DateTime.now().millisecondsSinceEpoch.toString(),
-                    name: nameController.text,
-                    address: addressController.text,
+                    name: placeName,
+                    address: placeAddress,
                     city: selectedCity!,
                     category: category,
                     description: '',

@@ -4,10 +4,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../models/study_place.dart';
 import '../providers/place_provider.dart';
-import 'favorites_screen.dart';
 import 'add_place_screen.dart';
-import 'profile_screen.dart';
 
+// Contenuto della sezione "Mappa" gestita da MainNavigationScreen.
+// Qui rimangono ricerca, filtri, luoghi e azioni specifiche della Home.
 class HomeMapScreen extends StatelessWidget {
   const HomeMapScreen({super.key});
 
@@ -16,16 +16,8 @@ class HomeMapScreen extends StatelessWidget {
     final placeProvider = context.watch<PlaceProvider>();
 
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(54),
-        child: SafeArea(
-          child: Container(
-            color: Colors.white,
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
-            child: _TopNavigationBar(),
-          ),
-        ),
-      ),
+      // Se i luoghi sono ancora in caricamento mostriamo lo spinner,
+      // altrimenti costruiamo la pagina con header, filtri e schede luogo.
       body: SafeArea(
         child: placeProvider.isLoading
             ? const Center(child: CircularProgressIndicator())
@@ -43,7 +35,8 @@ class HomeMapScreen extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(20, 10, 20, 30),
                     sliver: SliverList.separated(
                       itemCount: placeProvider.places.length,
-                      separatorBuilder: (_, _) => const SizedBox(height: 16),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 16),
                       itemBuilder: (context, index) {
                         return _PlaceCard(place: placeProvider.places[index]);
                       },
@@ -52,6 +45,9 @@ class HomeMapScreen extends StatelessWidget {
                 ],
               ),
       ),
+
+      // Questo FAB appartiene esclusivamente alla sezione Mappa.
+      // Per ora resta qui così non compare nelle altre pagine del PageView.
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 10.0, right: 6.0),
         child: FloatingActionButton.small(
@@ -69,6 +65,7 @@ class HomeMapScreen extends StatelessWidget {
   }
 }
 
+// Header della Home: titolo, sottotitolo e barra di ricerca.
 class _Header extends StatelessWidget {
   final ValueChanged<String> onSearch;
 
@@ -90,7 +87,7 @@ class _Header extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Dove Studiano?',
+            'Dove Studiamo?',
             style: TextStyle(
               color: Colors.white,
               fontSize: 31,
@@ -139,6 +136,8 @@ class _Header extends StatelessWidget {
   }
 }
 
+// Riga dei filtri principali.
+// È Stateful perché deve ricordare la categoria selezionata.
 class _CategoryRow extends StatefulWidget {
   final ValueChanged<String> onCategorySelected;
 
@@ -167,14 +166,16 @@ class _CategoryRowState extends State<_CategoryRow> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => const SizedBox(width: 10),
         itemBuilder: (context, index) {
           final selected = index == selectedIndex;
+
           return GestureDetector(
             onTap: () {
               setState(() {
                 selectedIndex = index;
               });
+
               widget.onCategorySelected(categories[index]);
             },
             child: Container(
@@ -204,20 +205,37 @@ class _CategoryRowState extends State<_CategoryRow> {
   }
 }
 
+// Card singola di un luogo.
+// Mostra le informazioni principali e apre il dettaglio al tap.
 class _PlaceCard extends StatelessWidget {
   final StudyPlace place;
 
   const _PlaceCard({required this.place});
 
+  // Apre il luogo su Google Maps usando una ricerca testuale.
+  // Non viene usata direttamente una API Maps.
   Future<void> _openMap(BuildContext context) async {
     final query = Uri.encodeComponent('${place.address}, ${place.city}');
+
     final url = Uri.parse(
       'https://www.google.com/maps/search/?api=1&query=$query',
     );
 
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
+    // Se il link non può essere aperto mostriamo un messaggio
+    // invece di fallire silenziosamente.
+    if (!await canLaunchUrl(url)) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Non riesco ad aprire Google Maps per questo luogo.'),
+          ),
+        );
+      }
+
+      return;
     }
+
+    await launchUrl(url, mode: LaunchMode.externalApplication);
   }
 
   @override
@@ -275,6 +293,9 @@ class _PlaceCard extends StatelessWidget {
                         }).toList(),
                       ),
                       const SizedBox(height: 30),
+
+                      // Il Consumer permette al pulsante preferiti
+                      // di aggiornarsi anche mentre il dettaglio è aperto.
                       Consumer<PlaceProvider>(
                         builder: (context, provider, child) {
                           final updatedPlace = provider.places.firstWhere(
@@ -310,7 +331,7 @@ class _PlaceCard extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton.icon(
                           onPressed: () => _openMap(context),
-                          icon: const Icon(Icons.map),
+                          icon: const Icon(Icons.map_rounded),
                           label: const Text('Apri su Google Maps'),
                         ),
                       ),
@@ -352,6 +373,8 @@ class _PlaceCard extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 6),
+
+                    // Anche l'indirizzo nella card apre Google Maps.
                     InkWell(
                       onTap: () => _openMap(context),
                       borderRadius: BorderRadius.circular(8),
@@ -435,6 +458,8 @@ class _PlaceCard extends StatelessWidget {
   }
 }
 
+// Placeholder visivo del luogo.
+// Per ora cambia icona in base alla categoria.
 class _PlaceImage extends StatelessWidget {
   final String category;
 
@@ -464,64 +489,6 @@ class _PlaceImage extends StatelessWidget {
         ),
       ),
       child: Icon(icon, size: 42, color: const Color(0xFF2F6FED)),
-    );
-  }
-}
-
-class _TopNavigationBar extends StatelessWidget {
-  const _TopNavigationBar();
-
-  @override
-  Widget build(BuildContext context) {
-    final items = [
-      ('Mappa', null),
-      (
-        'Preferiti',
-        () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const FavoritesScreen()),
-          );
-        },
-      ),
-      (
-        'Profilo',
-        () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const ProfileScreen()),
-          );
-        },
-      ),
-    ];
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(items.length, (index) {
-          final selected = index == 0;
-          return GestureDetector(
-            onTap: items[index].$2,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 6),
-              padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 9),
-              decoration: BoxDecoration(
-                color: selected
-                    ? const Color(0xFF2F6FED)
-                    : const Color(0xFFF3F4F6),
-                borderRadius: BorderRadius.circular(999),
-              ),
-              child: Text(
-                items[index].$1,
-                style: TextStyle(
-                  color: selected ? Colors.white : const Color(0xFF374151),
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          );
-        }),
-      ),
     );
   }
 }

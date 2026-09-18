@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../screens/home_map_screen.dart';
+import '../screens/main_navigation_screen.dart';
 
 class DoveStudianoApp extends StatelessWidget {
   const DoveStudianoApp({super.key});
@@ -25,7 +25,10 @@ class DoveStudianoApp extends StatelessWidget {
           centerTitle: false,
         ),
       ),
-      home: const HomeMapScreen(),
+
+      // MainNavigationScreen è ora il contenitore principale dell'app.
+      // Gestisce le quattro sezioni, la navbar persistente e lo swipe.
+      home: const MainNavigationScreen(),
     );
   }
 }
